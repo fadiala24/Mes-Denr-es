@@ -5,9 +5,13 @@ import com.example.apidenrees.Model.Boutiques;
 import com.example.apidenrees.Repositories.BoutiqueRepository;
 import com.example.apidenrees.Services.BoutiqueService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class BoutiqueServiceImpl implements BoutiqueService {
     @Autowired
     BoutiqueRepository boutiqueRepository;
@@ -45,5 +49,16 @@ public class BoutiqueServiceImpl implements BoutiqueService {
         boutiqueExistant.setPhoto(boutiques.getPhoto());
         boutiqueExistant.setQuartier(boutiques.getQuartier());
         return "Boutique modifiée avec succes";
+    }
+
+    @Override
+    public Boutiques getBoutiqueByVilleAndQuartier(String ville, String quartier) {
+        return boutiqueRepository.findBoutiqueByVilleQAndQuartier(ville,quartier);
+    }
+
+
+    @Override
+    public Boutiques getBoutiqueByQuartier(String quartier) {
+        return boutiqueRepository.findBoutiquesByQuartier(quartier);
     }
 }

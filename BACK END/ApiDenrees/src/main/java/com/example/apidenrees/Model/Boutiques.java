@@ -1,6 +1,6 @@
 package com.example.apidenrees.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.mapping.Collection;
 
 import javax.persistence.*;
 import java.util.List;
@@ -15,6 +15,16 @@ public class Boutiques {
     private String nom;
     private String adresse;
     private String ville;
+    private String quartier;
+    private String photo;
+
+    @ManyToMany
+    private List<Administrateur> administrateurs;
+
+
+    @ManyToOne
+    private Boutiquier boutiquier;
+
 
     public String getNom() {
         return nom;
@@ -38,14 +48,6 @@ public class Boutiques {
 
     public void setVille(String ville) {
         this.ville = ville;
-    }
-
-    public List<Produits> getProduits() {
-        return produits;
-    }
-
-    public void setProduits(List<Produits> produits) {
-        this.produits = produits;
     }
 
     public String getQuartier() {
@@ -82,19 +84,6 @@ public class Boutiques {
 
     public Boutiques() {
     }
-
-    private String quartier;
-    private String photo;
-
-    @ManyToMany
-    private List<Administrateur> administrateurs;
-
-    @JsonIgnore
-    @ManyToMany(mappedBy = "boutiques")
-    private List<Produits> produits;
-
-    @ManyToOne
-    private Boutiquier boutiquier;
 
     public Long getId() {
         return id;

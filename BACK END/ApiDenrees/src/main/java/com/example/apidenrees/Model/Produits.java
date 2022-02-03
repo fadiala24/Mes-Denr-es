@@ -1,6 +1,7 @@
 package com.example.apidenrees.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.mapping.Collection;
 
 import javax.persistence.*;
 import java.util.List;
@@ -21,9 +22,13 @@ public class Produits {
     @OneToMany(mappedBy = "produits")
     private List<Boutiquier> boutiquiers;
 
-    @ManyToMany
-    private List<Boutiques> boutiques;
+    public List<Boutiquier> getBoutiquiers() {
+        return boutiquiers;
+    }
 
+    public void setBoutiquiers(List<Boutiquier> boutiquiers) {
+        this.boutiquiers = boutiquiers;
+    }
 
     public String getNom() {
         return nom;

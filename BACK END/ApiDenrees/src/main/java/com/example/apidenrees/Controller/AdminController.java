@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/APIDENREES")
+@RequestMapping("/api/Admin")
 public class AdminController {
     @Autowired
     AdminServiceImpl adminServiceImpl;

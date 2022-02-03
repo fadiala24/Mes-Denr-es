@@ -12,4 +12,7 @@ public interface BoutiqueService {
     public Boutiques getBoutiqueById(Long id);
     public String supprimer_boutique(Long id);
     public String modifier_boutique(Boutiques boutiques, Long id);
+    public List<Boutiques> getBoutiqueByVilleAndQuartier(String ville, String quartier);
+    public Boutiques getBoutiqueByVille(String ville);
+    public Boutiques getBoutiqueByQuartier(String quartier);
 }

@@ -3,6 +3,8 @@ package com.example.apidenrees.Controller;
 import com.example.apidenrees.Model.Administrateur;
 import com.example.apidenrees.Model.Boutiques;
 import com.example.apidenrees.ServiceImpl.BoutiqueServiceImpl;
+import com.example.apidenrees.Services.BoutiqueService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,13 +13,16 @@ import java.util.List;
 @CrossOrigin("*")
 @RequestMapping("/api/Boutique")
 public class BoutiqueController {
-    BoutiqueServiceImpl boutiqueServiceImpl;
+   @Autowired
+    BoutiqueService boutiqueService;
 
+   @Autowired
+   BoutiqueServiceImpl boutiqueServiceImpl;
     // ***************  Ajout d'un Boutique ***************
 
     @PostMapping("/addBoutique")
     public String saveBoutique(@RequestBody Boutiques boutiques){
-        return this.boutiqueServiceImpl.aujout_boutique(boutiques);
+        return boutiqueService.aujout_boutique(boutiques);
     }
 
     // ******************** Liste des Boutiques
@@ -46,4 +51,22 @@ public class BoutiqueController {
     public String updateBoutique(@PathVariable Long id, @RequestBody Boutiques boutiques){
         return this.boutiqueServiceImpl.modifier_boutique(boutiques, id);
     }
+
+    // **************************** Affichage de la Boutique Par quartier et par ville ***************
+    @GetMapping("/getBoutiqueByVille&Quartier")
+    public Boutiques getBoutiquesByVilleAndQuartier(@RequestParam String ville, @RequestParam String quartier) {
+        return boutiqueServiceImpl.getBoutiqueByVilleAndQuartier(ville,quartier);
+    }
+
+    // ****************************** Affichage de la boutique par quartier ********************
+    @GetMapping("/getBoutiqueByQuartier")
+    public Boutiques getBoutiquesByQuartier(@RequestParam String quartier) {
+        return boutiqueServiceImpl.getBoutiqueByQuartier(quartier);
+    }
+    // *********************************** Affichage de la boutique ville ********************
+    @GetMapping("/getBoutiqueByVille/ville={ville}")
+    public Boutiques getBoutiquesByVille(@PathVariable String ville) {
+        return boutiqueServiceImpl.getBoutiqueByVille(ville);
+    }
+
 }
