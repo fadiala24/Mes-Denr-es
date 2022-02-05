@@ -1,5 +1,7 @@
 package com.example.apidenrees.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class ProduitBoutique {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     private Boutiques boutiques;
 
@@ -31,6 +34,7 @@ public class ProduitBoutique {
         this.produits = produits;
     }
 
+    @JsonIgnore
     @ManyToOne
     private Produits produits;
 

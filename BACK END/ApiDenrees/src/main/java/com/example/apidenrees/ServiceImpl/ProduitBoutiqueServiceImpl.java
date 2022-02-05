@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -15,7 +16,7 @@ public class ProduitBoutiqueServiceImpl implements ProduitBoutiqueService {
     ProduitBoutiqueRepository produitBoutiqueRepository;
 
     @Override
-    public ProduitBoutique getBoutiqueByQuartierAndCategory(String quartier, String category) {
+    public List<ProduitBoutique> getBoutiqueByQuartierAndCategory(String quartier, String category) {
        return produitBoutiqueRepository.findBoutiqueByQuartierAndCategory(quartier,category);
     }
 }

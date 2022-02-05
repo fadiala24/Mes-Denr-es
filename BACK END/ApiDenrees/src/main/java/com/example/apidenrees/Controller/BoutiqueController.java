@@ -53,20 +53,20 @@ public class BoutiqueController {
     }
 
     // **************************** Affichage de la Boutique Par quartier et par ville ***************
-    @GetMapping("/getBoutiqueByVille&Quartier")
-    public Boutiques getBoutiquesByVilleAndQuartier(@RequestParam String ville, @RequestParam String quartier) {
+   @GetMapping("/getBoutiqueByVille&Quartier/ville={ville}&quartier={quartier}")
+    List<Boutiques> getBoutiquesByVilleAndQuartier(@PathVariable String ville, @PathVariable String quartier) {
         return boutiqueServiceImpl.getBoutiqueByVilleAndQuartier(ville,quartier);
     }
 
     // ****************************** Affichage de la boutique par quartier ********************
-    @GetMapping("/getBoutiqueByQuartier")
-    public Boutiques getBoutiquesByQuartier(@RequestParam String quartier) {
+    @GetMapping("/getBoutiqueByQuartier/quartier={quartier}")
+    List <Boutiques> getBoutiquesByQuartier(@PathVariable String quartier) {
         return boutiqueServiceImpl.getBoutiqueByQuartier(quartier);
     }
     // *********************************** Affichage de la boutique ville ********************
-    @GetMapping("/getBoutiqueByVille/ville={ville}")
-    public Boutiques getBoutiquesByVille(@PathVariable String ville) {
-        return boutiqueServiceImpl.getBoutiqueByVille(ville);
+   @GetMapping("/getBoutiqueByVille/ville={ville}")
+    List<Boutiques> getBoutiquesByVille(@PathVariable String ville) {
+        return this.boutiqueServiceImpl.getBoutiqueByVille(ville);
     }
 
 }

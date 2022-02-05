@@ -52,13 +52,17 @@ public class BoutiqueServiceImpl implements BoutiqueService {
     }
 
     @Override
-    public Boutiques getBoutiqueByVilleAndQuartier(String ville, String quartier) {
+    public List<Boutiques> getBoutiqueByVilleAndQuartier(String ville, String quartier) {
         return boutiqueRepository.findBoutiqueByVilleQAndQuartier(ville,quartier);
     }
 
+    @Override
+    public List<Boutiques> getBoutiqueByVille(String ville) {
+        return boutiqueRepository.findBoutiquesByVille(ville);
+    }
 
     @Override
-    public Boutiques getBoutiqueByQuartier(String quartier) {
+    public List<Boutiques> getBoutiqueByQuartier(String quartier) {
         return boutiqueRepository.findBoutiquesByQuartier(quartier);
     }
 }

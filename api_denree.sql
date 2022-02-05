@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 03 fév. 2022 à 22:59
+-- Généré le : sam. 05 fév. 2022 à 10:19
 -- Version du serveur : 10.4.20-MariaDB
 -- Version de PHP : 7.3.29
 
@@ -74,7 +74,7 @@ CREATE TABLE `boutiques` (
 INSERT INTO `boutiques` (`id`, `adresse`, `nom`, `photo`, `quartier`, `ville`, `boutiquier_id`) VALUES
 (1, 'Commune II', 'Simpara', 'photo1', 'Sebenikoro', 'Bamako', NULL),
 (2, 'Commune III', 'Mille Merveille', 'photo2', 'Hamdalaye', 'Segou', NULL),
-(3, 'Commune IV', 'Millette', 'photo3', 'sebenikoro', 'Bamako', NULL),
+(3, 'Commune IV', 'Millette', 'photo3', 'Sebenikoro', 'Bamako', NULL),
 (4, 'Commune VII', 'Millet', 'photo3', 'Sebougou', 'Kayes', NULL),
 (5, 'Commune VII', 'Millet', 'photo4', 'Sabalibougou', 'Bamako', NULL),
 (6, 'Commune VI', 'Riz Brizure', 'photo5', 'Sabalibougou', 'Bamako', NULL);
@@ -143,6 +143,15 @@ CREATE TABLE `produit_boutique` (
   `boutiques_id` bigint(20) DEFAULT NULL,
   `produits_id` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `produit_boutique`
+--
+
+INSERT INTO `produit_boutique` (`id`, `boutiques_id`, `produits_id`) VALUES
+(1, 1, 1),
+(2, 1, 3),
+(3, 2, 3);
 
 --
 -- Index pour les tables déchargées
@@ -221,7 +230,7 @@ ALTER TABLE `produits`
 -- AUTO_INCREMENT pour la table `produit_boutique`
 --
 ALTER TABLE `produit_boutique`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
