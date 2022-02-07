@@ -3,20 +3,21 @@ package com.example.apidenrees.Controller;
 import com.example.apidenrees.Model.Administrateur;
 import com.example.apidenrees.ServiceImpl.AdminServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/Admin")
+@RequestMapping("/api/Admins")
 public class AdminController {
     @Autowired
     AdminServiceImpl adminServiceImpl;
 
     // ***************  Ajout d'un Admin ***************
 
-    @PostMapping("/addAdmin")
+    @PostMapping(value = "/addAdmin", produces = MediaType.APPLICATION_JSON_VALUE)
     public String saveAdmin(@RequestBody Administrateur administrateur){
         return this.adminServiceImpl.ajout_administrateurs(administrateur);
     }
