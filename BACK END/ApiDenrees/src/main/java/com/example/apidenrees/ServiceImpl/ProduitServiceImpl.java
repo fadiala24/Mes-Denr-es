@@ -35,8 +35,8 @@ public class ProduitServiceImpl implements ProduitService {
 
     @Override
     public String supprimer_produit(Long id) {
-        Produits produits = produitRepositry.findById(id).get();
-        return "Vous avez supprimer le produit "+produits.getNom();
+        this.produitRepositry.deleteById(id);
+        return "Vous avez supprimer le produit ";
     }
 
     @Override

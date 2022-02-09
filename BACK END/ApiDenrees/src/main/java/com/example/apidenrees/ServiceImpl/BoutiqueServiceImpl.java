@@ -34,8 +34,8 @@ public class BoutiqueServiceImpl implements BoutiqueService {
 
     @Override
     public String supprimer_boutique(Long id) {
-        Boutiques boutiques = boutiqueRepository.findById(id).get();
-        return "Vous avez supprimer la Boutique "+boutiques.getNom()+" de "+boutiques.getQuartier();
+        this.boutiqueRepository.deleteById(id);
+        return "Vous avez supprimer la Boutique ";
 
     }
 
